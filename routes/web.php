@@ -15,5 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout' );
+Route::get('/perfil', 'UserController@perfil')->name('perfil' );
 
 Route::get('/', 'HomeController@index')->name('home');
