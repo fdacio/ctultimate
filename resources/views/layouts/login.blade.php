@@ -29,7 +29,7 @@
 </head>
 
 <body>
-    <div class="content">
+    <div class="content mt-2">
         @yield('content')
     </div>
 
