@@ -1,5 +1,41 @@
-body {
+html {
+    height: 100%;
+}
+
+html body {
     font-size: 1rem;
+    height: 100%;
+    overflow: hidden;
+}
+
+html body .container-fluid.body-content {
+    position: absolute;
+    top: 80px;
+    bottom: 60px;
+    right: 0;
+    left: 0;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+header {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 50px;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #f5f5f5;
+    height: 60px;
+    line-height: 60px;
+    width: 100%;
+    padding-left: 250px;
 }
 
 .feather {
@@ -14,7 +50,7 @@ body {
 
 .sidebar {
     margin-top: 60px;
-    width: 250px;
+    width: 228px;
     position: fixed;
     top: 0;
     left: 0;
@@ -81,6 +117,11 @@ body {
     border-radius: 0;
 }
 
+.menu-responsive .nav {
+    position: relative;
+    z-index: 999;
+}
+
 .form-control-dark {
     color: #fff;
     background-color: rgba(255, 255, 255, .1);
@@ -104,27 +145,15 @@ body {
     border-bottom: 1px solid #e5e5e5;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    line-height: 60px;
-    /* Vertically center the text there */
-    background-color: #f5f5f5;
-    padding-left: 250px;
-}
-
-@media(max-width: 660px){
+@media(max-width: 660px) {
     .sidebar {
         display: none;
     }
-    .footer {
+    footer {
         padding-left: 8px;
         font-size: .80rem;
     }
-    .img-login {
-        display: none;
+    .navbar-brand {
+        width: auto;
     }
-  }
+}

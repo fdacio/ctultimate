@@ -12,32 +12,26 @@
     <title>{{ config('app.name', 'Cotação') }}</title>
 
     <!-- Styles -->
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"
         rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
 </head>
 
 <body>
-    <div class="wrapper">
+    <header>
         <nav class="navbar navbar-dark navbar-expand-sm bg-primary p-0">
-            <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#"><img
-                    src="{{ asset('img/logo-sistema-cotacao-navbar.png') }}" alt="logo" width="130"></a>
+            <a class="navbar-brand col-md-2" href="#">
+                <img src="{{ asset('img/logo-sistema-cotacao-navbar.png') }}" alt="logo" width="130">
+            </a>
             <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
-            <div class="collapse navbar-collapse " id="navbarSupportedContent">
-                <div class="menu-responsive d-none text-white">
-                    @include('layouts.menus.menu-main')
-                </div>
-            </div>
-
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav px-3 ml-auto">
                     <li class="nav-item dropdown">
@@ -57,22 +51,29 @@
             </div>
         </nav>
 
-        <div class="container">
-            <div class="row">
-                <nav class="sidebar col-md-2 d-md-block bg-light hide">
-                    <div class="sidebar-sticky">
-                        @include('layouts.menus.menu-main')
-                    </div>
-                </nav>
-                <main role="main" class="col-md-10 ml-sm-auto col-lg-10 ">
-                    @yield('content')
-                </main>
-            </div>
+        <div class="collapse navbar-collapse menu-responsive" id="navbarSupportedContent">
+            <nav class="nav navbar-nav text-white bg-primary">
+                @include('layouts.menus.menu-main')
+            </nav>
         </div>
-        <footer class="footer">
-            Dacio Software. Todos os Direitos Reservados
-        </footer>
+        </div>
+
+    </header>
+    <div class="container-fluid body-content">
+        <div class="row">
+            <nav class="sidebar col-md-2 bg-light hide">
+                <div class="sidebar-sticky">
+                    @include('layouts.menus.menu-main')
+                </div>
+            </nav>
+            <main role="main" class="col-md-10 ml-sm-auto col-lg-10">
+                @yield('content')
+            </main>
+        </div>
     </div>
+    <footer>
+        Dacio Software. Todos os Direitos Reservados
+    </footer>
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
