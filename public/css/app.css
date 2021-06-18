@@ -124,4 +124,7 @@ body {
         padding-left: 8px;
         font-size: .80rem;
     }
+    .img-login {
+        display: none;
+    }
   }

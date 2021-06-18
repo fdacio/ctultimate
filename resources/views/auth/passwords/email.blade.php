@@ -10,7 +10,7 @@
                     </div>
                     <div class="d-flex">
                         <div class="card-body col-md-4 text-center pr-0">
-                            <img src="{{ asset('img/logo-sistema-cotacao.png') }}" alt="logo" class="img-fluid"
+                            <img src="{{ asset('img/logo-sistema-cotacao.png') }}" alt="logo" class="img-fluid img-login"
                                 width="150">
                         </div>
                         <div class="card-body col-md-8">
