@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header text-center bg-primary">
                         <img src="{{ asset('img/logo-sistema-cotacao-navbar.png') }}" alt="logo" class="float-left"
-                            width="120">
+                            width="150">
                     </div>
                     <div class="card-body p-2">
                         @yield('content-form')
