@@ -8,9 +8,9 @@
                     <div class="card-header text-center bg-primary">
                         <h4 class="text-white">Recuperar Senha</h4>
                     </div>
-                    <div class="d-flex">
-                        <div class="card-body col-md-4 text-center pr-0">
-                            <img src="{{ asset('img/logo-sistema-cotacao.png') }}" alt="logo" class="img-fluid img-login"
+                    <div class="row">
+                        <div class="card-body col-md-4 text-center pr-0 img-login">
+                            <img src="{{ asset('img/logo-sistema-cotacao.png') }}" alt="logo" class="img"
                                 width="150">
                         </div>
                         <div class="card-body col-md-8">

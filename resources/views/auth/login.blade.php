@@ -8,9 +8,9 @@
                     <div class="card-header text-center bg-primary">
                         <h4 class="text-white">Login</h4>
                     </div>
-                    <div class="d-flex">
-                        <div class="card-body col-md-4 text-center pr-0">
-                            <img src="{{ asset('img/logo-sistema-cotacao.png')}}" alt="logo" class="img-fluid img-login" width="150">
+                    <div class="row">
+                        <div class="card-body col-md-4 text-center pr-0 img-login">
+                            <img src="{{ asset('img/logo-sistema-cotacao.png')}}" alt="logo" class="img" width="150">
                         </div>
                         <div class="card-body col-md-8">
                             <form class="form" method="POST" action="{{ route('login') }}">
