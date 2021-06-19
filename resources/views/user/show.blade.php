@@ -23,7 +23,7 @@
                 </tr>
                 <tr>
                     <th>Tipo:</th>
-                    <td>{{ $user->token }}</td>
+                    <td>{{ $user->tipo->nome }}</td>
                 </tr>
                 <tr>
                     <th>Cadastro:</th>

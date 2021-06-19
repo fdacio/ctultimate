@@ -14,6 +14,11 @@
                                 <strong>{{ $errors->first('email') }}</strong>
                             </span>
                         @endif
+                        @if ($errors->has('status'))
+                        <span class="text-danger">
+                            <strong>{{ $errors->first('status') }}</strong>
+                        </span>
+                    @endif
                     </div>
                 </div>
             </div>

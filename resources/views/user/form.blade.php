@@ -42,6 +42,16 @@
     </div>
 </div>
 @endif
+@if(!empty($user))
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <label for="status">Status</label>
+            {!! Form::select('status', [1 => 'Ativo', 0 => 'Inativo'], ($user->status == 1) ? 1 : 0, ['class' => 'form-control', 'id' => 'status']) !!}
+        </div>
+    </div>
+</div>
+@endif
 
 @section('scripts')
 <script>

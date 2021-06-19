@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'id_tipo', 'status'
     ];
 
     /**
@@ -34,5 +34,15 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+
+    public static function encryptSenha($senha)
+    {
+        return password_hash($senha, PASSWORD_BCRYPT);
+    }
+
+    public function tipo()
+    {
+        return $this->belongsTo('Cotacao\TipoUsuario', 'id_tipo');
     }
 }

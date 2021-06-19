@@ -54,10 +54,10 @@
                 <td>{{ $user->id }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
-                <td>{{ $user->token }}</td>
+                <td>{{ $user->tipo->nome }}</td>
                 <td>
                     @if ($user->status == 0)
-                    <span class="text text-default">Inativo</span>
+                    <span class="text text-danger">Inativo</span>
                     @else
                     <span class="text text-success">Ativo</span>
                     @endif
