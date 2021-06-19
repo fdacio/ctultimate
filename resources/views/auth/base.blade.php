@@ -15,3 +15,11 @@
         </div>
     </div>
 @endsection
+@section('scripts')
+<script>
+    $('.form').submit(function() {
+        console.log($(this));
+        $(this).find('button[type=submit]').prop('disabled', true).html('Aguarde...');
+    });
+</script>
+@endsection

@@ -33,21 +33,23 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav px-3 ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle  text-white" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-user-circle mr-2  text-white" style="font-size: 24px"></i>
-                            <span class="hidden-xs">{{ Auth::user()->name }}</span>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Perfil</a>
-                            <a class="dropdown-item" href="#">Alterar Senha</a>
-                            <a class="dropdown-item" href="{{ route('logout') }}">Sair</a>
-                        </div>
+                @auth
+                    <ul class="nav navbar-nav px-3 ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle  text-white" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-circle mr-2  text-white" style="font-size: 24px"></i>
+                                <span class="hidden-xs">{{ Auth::user()->name }}</span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('perfil')}}">Perfil</a>
+                                <a class="dropdown-item" href="#">Alterar Senha</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}">Sair</a>
+                            </div>
 
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                @endauth
             </div>
         </nav>
 
