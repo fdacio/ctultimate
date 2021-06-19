@@ -15,6 +15,7 @@ class CreateUserAdminSeeder extends Seeder
         $dados = [
             'name' => 'Administrador',
             'email' => 'admin@daciosoftware.com.br',
+            'id_tipo' => 1,
             'password' => bcrypt('123321')
         ];
 
