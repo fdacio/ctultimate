@@ -23,7 +23,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "Cotacao\\": "app/"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {

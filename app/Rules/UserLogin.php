@@ -1,8 +1,8 @@
 <?php
 
-namespace Cotacao\Rules;
+namespace App\Rules;
 
-use Cotacao\User;
+use App\User;
 use Illuminate\Contracts\Validation\Rule;
 
 class UserLogin implements Rule

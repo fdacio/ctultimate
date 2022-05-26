@@ -1,8 +1,8 @@
 <?php
 
-namespace Cotacao;
+namespace App;
 
-use Cotacao\Notifications\ResetPassword;
+use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -43,6 +43,6 @@ class User extends Authenticatable
 
     public function tipo()
     {
-        return $this->belongsTo('Cotacao\TipoUsuario', 'id_tipo');
+        return $this->belongsTo('App\TipoUsuario', 'id_tipo');
     }
 }

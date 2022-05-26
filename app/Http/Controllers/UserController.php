@@ -1,10 +1,10 @@
 <?php
 
-namespace Cotacao\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Cotacao\Http\Requests\UserRequest;
-use Cotacao\TipoUsuario;
-use Cotacao\User;
+use App\Http\Requests\UserRequest;
+use App\TipoUsuario;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

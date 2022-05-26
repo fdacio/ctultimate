@@ -171,11 +171,11 @@ return [
         /*
          * Application Service Providers...
          */
-        Cotacao\Providers\AppServiceProvider::class,
-        Cotacao\Providers\AuthServiceProvider::class,
-        // Cotacao\Providers\BroadcastServiceProvider::class,
-        Cotacao\Providers\EventServiceProvider::class,
-        Cotacao\Providers\RouteServiceProvider::class,
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\EventServiceProvider::class,
+        App\Providers\RouteServiceProvider::class,
 
         /**
          * Directivas FORM HTML

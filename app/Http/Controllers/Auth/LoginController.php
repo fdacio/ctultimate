@@ -1,11 +1,11 @@
 <?php
 
-namespace Cotacao\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
-use Cotacao\Http\Controllers\Controller;
-use Cotacao\Http\Requests\UserRequest;
-use Cotacao\Rules\UserLogin;
-use Cotacao\User;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
+use App\Rules\UserLogin;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

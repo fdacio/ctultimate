@@ -1,8 +1,8 @@
 <?php
 
-namespace Cotacao\Http\Controllers;
+namespace App\Http\Controllers;
 
-use Cotacao\TipoUsuario;
+use App\TipoUsuario;
 use Illuminate\Http\Request;
 
 class TiposUsuariosController extends Controller
