@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Aluno;
 use Illuminate\Http\Request;
 
 class AlunosController extends Controller
@@ -10,7 +11,7 @@ class AlunosController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +19,13 @@ class AlunosController extends Controller
      */
     public function index()
     {
-        return view('alunos.index');
+        $alunos = Aluno::orderBy('nome', 'asc');
+        $nome = request()->get('nome');
+        if (!empty($nome)) {
+            $alunos =  $alunos->where('nome', 'LIKE', '%' . $nome . '%');
+        }
+        $alunos = $alunos->paginate(10);
+        return view('alunos.index', compact('alunos'));
     }
 
     /**
