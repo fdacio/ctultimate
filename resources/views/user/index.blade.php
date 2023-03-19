@@ -62,12 +62,12 @@
                     <span class="text text-success">Ativo</span>
                     @endif
                 </td>
-                <td class="text-right">
-                    <a href="{{ route('user.show', $user->id) }}" class="btn btn-info" title="Visualizar"><i class="fa fa-eye"></i></a>
-                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary" title="Editar"><i class="fa fa-pencil"></i></a>
+                <td class="text-nowrap text-right">
+                    <a href="{{ route('user.show', $user->id) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa fa-eye"></i></a>
+                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>
                     @if($users->total() > 0)
                     {!! Form::open(['id' => 'form_excluir_' . $user->id, 'method' => 'delete', 'route' => ['user.destroy', $user->id], 'style'=>'display: inline']) !!}
-                    {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger modal-excluir']) !!}
+                    {!! Form::button('<i class="fa fa-trash"></i>', ['class' => 'btn btn-danger btn-sm modal-excluir']) !!}
                     {!! Form::close() !!}
                     @endif
                 </td>
