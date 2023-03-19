@@ -52,7 +52,7 @@
             <tr>
                 <td>{{ $aluno->id }}</td>
                 <td class="text-nowrap">{{ $aluno->nome }}</td>
-                <td class="text-nowrap">{{ \Carbon\Carbon::parse($aluno->nascimento)->format('d/m/Y') }}</td>
+                <td class="text-nowrap">{{ (isset($aluno->nascimento)) ? \Carbon\Carbon::parse($aluno->nascimento)->format('d/m/Y') : '' }}</td>
                 <td class="text-nowrap">{{ $aluno->telefone }}</td>
                 <td class="text-nowrap text-right">
                     <a href="{{ route('alunos.show', $aluno->id) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa fa-eye"></i></a>

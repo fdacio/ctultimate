@@ -18,7 +18,7 @@
                 </tr>
                 <tr>
                     <th>Nascimento:</th>
-                    <td>{{ \Carbon\Carbon::parse($aluno->nacimento)->format('d/m/Y')  }}</td>
+                    <td>{{ (isset($aluno->nacimento)) ? \Carbon\Carbon::parse($aluno->nacimento)->format('d/m/Y') : '' }}</td>
                 </tr>
                 <tr>
                     <th>Sexo:</th>
