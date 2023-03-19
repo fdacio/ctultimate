@@ -65,8 +65,8 @@
     <div class="row">
         <div class="col-xs-10 col-sm-10 col-md-10">
             <div class="form-group">
-                <label for="cidade">Cidade</label>
-                {!! Form::text('cidade', isset($aluno->cidade) ? $aluno->cidade : old('cidade'), ['class' => 'form-control', 'id' => 'cidade']) !!}
+                <label for="municipio">Município</label>
+                {!! Form::text('municipio', isset($aluno->municipio) ? $aluno->municipio : old('municipio'), ['class' => 'form-control', 'id' => 'municipio']) !!}
             </div>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
