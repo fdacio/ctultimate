@@ -94,13 +94,13 @@
         <div class="col-xs-8 col-sm-8 col-md-8">
             <div class="form-group">
                 <label for="responsavel">Responsável</label>
-                {!! Form::email('responsavel', isset($aluno) ? $aluno->responsavel : null, ['class' => 'form-control', 'id' => 'responsavel']) !!}
+                {!! Form::text('responsavel', isset($aluno) ? $aluno->responsavel : null, ['class' => 'form-control', 'id' => 'responsavel']) !!}
             </div>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
                 <label for="parentesco">Parentesco</label>
-                {!! Form::email('parentesco', isset($aluno) ? $aluno->parentesco : null, ['class' => 'form-control', 'id' => 'parentesco']) !!}
+                {!! Form::text('parentesco', isset($aluno) ? $aluno->parentesco : null, ['class' => 'form-control', 'id' => 'parentesco']) !!}
             </div>
         </div>
     </div>
