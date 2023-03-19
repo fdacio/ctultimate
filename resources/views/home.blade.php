@@ -14,7 +14,7 @@
                     </ul>
                 </div>
             @endif
-            <div class="card card-default">
+            <div class="card border-0">
                 <div class="card-body text-center">
                     <img class="img-fluid" src="img/logo-sistema.png">
                 </div>
