@@ -15,11 +15,8 @@
                 </div>
             @endif
             <div class="card card-default">
-                <div class="card-header bg-primary">
-                    <img src="{{ asset('img/logo-sistema-cotacao-navbar.png') }}" alt="logo" width="150">
-                </div>
                 <div class="card-body text-center">
-                    Bem vindo <b>{{ Auth::user()->name }}</b>
+                    <img class="image-responsive" src="img/logo-sistema.png">
                 </div>
             </div>
         </div>
