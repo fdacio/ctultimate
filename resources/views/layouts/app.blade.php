@@ -83,9 +83,91 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/i18n/pt-BR.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        //Rotas para consultas ajax
+        var rota = {
+            pacientes: "{{ route('api.pacientes') }}",
+            laudos: "{{ route('api.laudos') }}",
+        }
+    </script>
+
+    <script>
+        $(function() {
+
+            $('.cep').mask('99.999-999');
+            $('.telefone').mask('(99)9999-9999');
+            $('.celular').mask('(99)9 9999-9999');
+
+            $.fn.select2.defaults.set('theme', 'bootstrap');
+            $.fn.select2.defaults.set('language', 'pt-BR');
+            $('.select').select2({
+                dropdownAutoWidth: true,
+                width: '100%'
+            });
+
+            jQuery.datetimepicker.setLocale('pt');
+            $(".calendar").datetimepicker({
+                format: 'd/m/Y',
+                timepicker: false,
+                allowBlank: true,
+                validateOnBlur: false,
+                scrollMonth: false,
+                scrollInput: false,
+                i18n: {
+                    pt: {
+                        months: [
+                            'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho',
+                            'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+                        ],
+                        dayOfWeek: [
+                            'D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'
+                        ]
+                    }
+                },
+            });
+
+            $('input.data').mask('99/99/9999');
+
+            $('input.real').maskMoney({
+                prefix: 'R$ ',
+                thousands: '.',
+                decimal: ',',
+                precision: 2,
+                selectAllOnFocus: true,
+                allowZero: true
+            }).trigger('mask.maskMoney');
+
+            $('input.percentual').maskMoney({
+                suffix: ' %',
+                thousands: '.',
+                decimal: ',',
+                precision: 0,
+                selectAllOnFocus: true,
+                allowZero: true
+            }).trigger('mask.maskMoney');
+
+            $('input.quantidade').maskMoney({
+                prefix: '',
+                thousands: '',
+                decimal: ',',
+                precision: 3,
+                selectAllOnFocus: true,
+            }).trigger('mask.maskMoney');
+
+            $('input.numero, input.codigo, input.item').keyup(function(e) {
+                if (/\D/g.test(this.value)) {
+                    this.value = this.value.replace(/\D/g, '');
+                }
+            });
+        });
+    </script>
+
     @yield('scripts')
 </body>
 
