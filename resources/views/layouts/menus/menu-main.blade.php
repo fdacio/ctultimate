@@ -8,7 +8,7 @@
                 class="nav-label">Matrículas</span></a></li>
     <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><i class="fa fa-dollar"></i> <span
                 class="nav-label">Mensalidades</span></a></li>
-    <li class="nav-item"><a href="{{ route('user.index') }}" class="nav-link"><span
-                class="fa fa-user">Usuários</span></a></li>
+    <li class="nav-item"><a href="{{ route('user.index') }}" class="nav-link"><i class="fa fa-user"></i><span
+                class="nav-label">Usuários</span></a></li>
 
 </ul>
