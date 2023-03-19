@@ -91,10 +91,12 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
         //Rotas para consultas ajax
+        /*
         var rota = {
             pacientes: "{{ route('api.pacientes') }}",
             laudos: "{{ route('api.laudos') }}",
         }
+        */
     </script>
 
     <script>
