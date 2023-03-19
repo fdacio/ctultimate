@@ -25,7 +25,7 @@
     <header>
         <nav class="navbar navbar-dark navbar-expand-sm bg-primary p-0">
             <a class="navbar-brand col-md-2" href="#">
-                <img src="{{ asset('img/logo-sistema-cotacao-navbar.png') }}" alt="logo" width="130">
+                <img src="{{ asset('img/logo-sistema-navbar.png') }}" alt="logo" width="130">
             </a>
             <button class="navbar-toggler hidden-lg-up float-xs-right" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
