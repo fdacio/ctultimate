@@ -18,7 +18,7 @@
         <div class="col-xs-6 col-sm-6 col-md-6">
             <div class="form-group">
                 <label for="nascimento">Nascimento</label>
-                {!! Form::text('nascimento', isset($aluno) ? \Carbon\Carbon::parse($aluno->nascimento)->format('d/m/Y') : null, ['class' => 'form-control data', 'id' => 'nascimento']) !!}
+                {!! Form::text('nascimento', isset($aluno->nascimento) ? \Carbon\Carbon::parse($aluno->nascimento)->format('d/m/Y') : null, ['class' => 'form-control data', 'id' => 'nascimento']) !!}
             </div>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
