@@ -17,7 +17,7 @@ class Aluno extends Model
         'numero',
         'complemento',
         'bairro',
-        'cidade',
+        'municipio',
         'uf',
         'cep',
         'email',
