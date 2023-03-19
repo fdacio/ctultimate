@@ -35,7 +35,7 @@ class Aluno extends Model
 
     public function getEnderecoCompletoAttribute()
     {
-        $enderecoCompleto = $this->attributes['logradouro'] . ', ' . $this->attributes['numero'];
+        $enderecoCompleto = $this->attributes['endereco'] . ', ' . $this->attributes['numero'];
         if (!empty($this->attributes['complemento'])) {
             $enderecoCompleto .= ' - ' . $this->attributes['complemento'];
         }
