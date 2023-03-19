@@ -1,5 +1,5 @@
 <ul class="navbar-nav flex-column bg-default mt-2 p-2">
-    <li class="nav-item"><a href="{{ route('alunos') }}" class="nav-link"><i class="fa fa-users"></i> <span
+    <li class="nav-item"><a href="{{ route('alunos.index') }}" class="nav-link"><i class="fa fa-users"></i> <span
                 class="nav-label">Alunos</span></a></li>
     <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><i class="fa fa-list"></i> <span
                 class="nav-label">Matrículas</span></a></li>
