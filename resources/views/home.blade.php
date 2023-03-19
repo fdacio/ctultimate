@@ -16,7 +16,7 @@
             @endif
             <div class="card card-default">
                 <div class="card-body text-center">
-                    <img class="image-responsive" src="img/logo-sistema.png">
+                    <img class="img-fluid" src="img/logo-sistema.png">
                 </div>
             </div>
         </div>
