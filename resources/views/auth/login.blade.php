@@ -26,10 +26,7 @@
                 <div class="col-md-12">
                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                         <label for="password" class="control-label">Senha</label>
-
-
                         <input id="password" type="password" class="form-control" name="password">
-
                         @if ($errors->has('password'))
                             <span class="text-danger">
                                 <strong>{{ $errors->first('password') }}</strong>
