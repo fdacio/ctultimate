@@ -45,7 +45,7 @@ class Aluno extends Model
         if (!empty($this->attributes['cep'])) {
             $enderecoCompleto .= ' - CEP: ' . $this->attributes['cep'];
         }
-        $enderecoCompleto .= '  ' . $this->cidade. '-' . $this->uf;
+        $enderecoCompleto .= '  ' . $this->municipio. '-' . $this->uf;
         return $enderecoCompleto;
     }
 }
