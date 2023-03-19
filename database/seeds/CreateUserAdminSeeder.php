@@ -1,6 +1,6 @@
 <?php
 
-use Cotacao\User;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class CreateUserAdminSeeder extends Seeder

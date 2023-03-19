@@ -1,6 +1,6 @@
 <?php
 
-use Cotacao\TipoUsuario;
+use App\TipoUsuario;
 use Illuminate\Database\Seeder;
 
 class CreateTiposUsuariosSeeder extends Seeder
