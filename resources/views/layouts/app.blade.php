@@ -89,15 +89,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script>
-        //Rotas para consultas ajax
-        /*
-        var rota = {
-            pacientes: "{{ route('api.pacientes') }}",
-            laudos: "{{ route('api.laudos') }}",
-        }
-        */
-    </script>
 
     <script>
         $(function() {
