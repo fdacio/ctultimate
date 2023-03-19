@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Aluno;
+use App\Http\Requests\AlunoRequest;
+use Exception;
 use Illuminate\Http\Request;
 
 class AlunosController extends Controller
@@ -35,7 +37,7 @@ class AlunosController extends Controller
      */
     public function create()
     {
-        //
+        return view('alunos.create');
     }
 
     /**
@@ -44,9 +46,10 @@ class AlunosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AlunoRequest $request)
     {
-        //
+        Aluno::create($request->all());
+        return redirect()->route('alunos.index')->with('success', 'Aluno cadastrado com sucesso.');
     }
 
     /**
@@ -55,9 +58,9 @@ class AlunosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Aluno $aluno)
     {
-        //
+        return view('alunos.show', compact('aluno'));
     }
 
     /**
@@ -66,9 +69,9 @@ class AlunosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Aluno $aluno)
     {
-        //
+        return view('alunos.edit', compact('aluno'));
     }
 
     /**
@@ -78,9 +81,10 @@ class AlunosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AlunoRequest $request, Aluno $aluno)
     {
-        //
+        $aluno->update($request->all());
+        return redirect()->route('alunos.index')->with('success', 'Cadastro de aluno alterado com sucesso.');
     }
 
     /**
@@ -89,8 +93,13 @@ class AlunosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Aluno $aluno)
     {
-        //
+        try {
+            $aluno->delete();
+            return redirect()->route('alunos.index')->with('success', 'Cadastro de aluno excluído com sucesso.');
+        } catch (Exception $e) {
+            return redirect()->route('alunos.index')->with('danger', 'Não é possível excluir aluno. Há vínculos');
+        }
     }
 }
