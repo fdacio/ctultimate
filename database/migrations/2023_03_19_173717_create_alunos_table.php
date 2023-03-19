@@ -19,7 +19,7 @@ class CreateAlunosTable extends Migration
             $table->date('nascimento')->nullable();
             $table->enum('sexo', ['M', 'F'])->nullable();
             $table->string('cpf', 14)->nullable();
-            $table->string('endereço', 80)->nullable();
+            $table->string('endereco', 80)->nullable();
             $table->string('numero', 10)->nullable();
             $table->string('bairro', 60)->nullable();
             $table->string('complemento', 30)->nullable();
@@ -28,7 +28,7 @@ class CreateAlunosTable extends Migration
             $table->string('uf', 20)->nullable();
             $table->string('telefone', 20)->nullable();
             $table->string('email', 100)->nullable();
-            $table->string('reponsavel', 60)->nullable();
+            $table->string('responsavel', 60)->nullable();
             $table->string('parentesco', 60)->nullable();
             $table->timestamps();
         });
