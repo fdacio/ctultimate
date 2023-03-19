@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\TipoUsuario;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -14,7 +13,6 @@ class UserController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('auth.access')->except(['perfil', 'editPassword', 'passwordUpdate']);
-
     }
     
     public function perfil()
@@ -59,7 +57,7 @@ class UserController extends Controller
     {
         $data = $request->all();
         $data['password'] = User::encryptSenha($request->password);
-        $user = User::create($data);
+        User::create($data);
         return redirect()->route('user.index');
     }
 
