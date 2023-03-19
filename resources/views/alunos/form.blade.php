@@ -31,8 +31,8 @@
     <div class="row">
         <div class="col-xs-10 col-sm-10 col-md-10">
             <div class="form-group">
-                <label for="logradouro">Logradouro</label>
-                {!! Form::text('logradouro', isset($aluno) ? $aluno->logradouro : null, ['class' => 'form-control', 'id' => 'logradouro', 'id' => 'logradouro']) !!}
+                <label for="endereco">Endereço</label>
+                {!! Form::text('endereco', isset($aluno) ? $aluno->endereco : null, ['class' => 'form-control', 'id' => 'endereco', 'id' => 'endereco']) !!}
             </div>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
