@@ -1,9 +1,9 @@
 <ul class="navbar-nav flex-column bg-default mt-2 p-2">
-    <li class="nav-item"> <a href="{{ route('home') }}" class="nav-link"><i class="fa fa-peoples"></i> <span
+    <li class="nav-item"> <a href="{{ route('home') }}" class="nav-link"><i class="fa fa-users"></i> <span
                 class="nav-label">Alunos</span></a></li>
-    <li class="nav-item"> <a href="{{ route('home') }}" class="nav-link"><i class="fa fa-check-list"></i> <span
+    <li class="nav-item"> <a href="{{ route('home') }}" class="nav-link"><i class="fa fa-list"></i> <span
                 class="nav-label">Matrículas</span></a></li>
-    <li class="nav-item"> <a href="{{ route('home') }}" class="nav-link"><i class="fa fa-dolar></i> <span
+    <li class="nav-item"> <a href="{{ route('home') }}" class="nav-link"><i class="fa fa-dollar"></i> <span
                     class="nav-label">Mensalidades</span></a></li>            
 
     <li class="nav-item"> <a href="#" data-toggle="collapse" data-target="#users" class="collapsed nav-link"><i
