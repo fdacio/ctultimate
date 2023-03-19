@@ -3,7 +3,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-4 offset-md-4">
-                <div class="card">
+                <div class="card border border-primary">
                     <div class="card-header bg-white border border-primary text-center">
                         <img src="{{ asset('img/logo-sistema-navbar.png') }}" alt="logo" width="150">
                     </div>
