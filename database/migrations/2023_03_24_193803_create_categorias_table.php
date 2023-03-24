@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMatriculasTable extends Migration
+class CreateCategoriasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateMatriculasTable extends Migration
      */
     public function up()
     {
-        Schema::create('matriculas', function (Blueprint $table) {
+        Schema::create('categorias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('data');
-            $table->unsignedBigInteger('id_aluno');
-            $table->unsignedBigInteger('id_categoria');
-            $table->integer('quantidade_meses');
+            $table->string('nome', '60');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateMatriculasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('matriculas');
+        Schema::dropIfExists('categorias');
     }
 }

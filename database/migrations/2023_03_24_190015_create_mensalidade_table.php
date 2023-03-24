@@ -15,6 +15,15 @@ class CreateMensalidadeTable extends Migration
     {
         Schema::create('mensalidades', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('id_matricula');
+            $table->integer('numero');
+            $table->decimal('valor', 15, 2);
+            $table->date('vencimento');
+            $table->integer('situacao')->default(1);
+            $table->date('data_pagamento')->nullable();
+            $table->decimal('valor_pago', 15, 2)->nullable();
+            $table->text('observacao')->nullable();
+            $table->foreign('id_matricula')->references('id')->on('matriculas');
             $table->timestamps();
         });
     }
