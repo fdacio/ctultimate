@@ -2,11 +2,11 @@
 @section('title', 'Alunos - Visualizar')
 
 @section('content')
-    <div class="card table-responsive">
+    <div class="card">
         <div class="card-header">
             <h2>Visualizar Aluno</h2>
         </div>
-        <div class="card-body">
+        <div class="card-body table-responsive">
             <table class="table table-striped table-hover table-responsive">
                 <tr>
                     <th class="col-md-2">ID:</th>
