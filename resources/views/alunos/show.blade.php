@@ -2,7 +2,7 @@
 @section('title', 'Alunos - Visualizar')
 
 @section('content')
-    <div class="card">
+    <div class="card table-responsive">
         <div class="card-header">
             <h2>Visualizar Aluno</h2>
         </div>
