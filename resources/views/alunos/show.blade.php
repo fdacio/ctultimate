@@ -7,14 +7,14 @@
             <h2>Visualizar Aluno</h2>
         </div>
         <div class="card-body table-responsive">
-            <table class="table table-striped table-hover table-responsive">
+            <table class="table table-striped table-hover">
                 <tr>
                     <th class="col-md-2">ID:</th>
                     <td>{{ $aluno->id }}</td>
                 </tr>
                 <tr>
                     <th>Nome</th>
-                    <td>{{ $aluno->nome }}</td>
+                    <td class="text-nowrap">{{ $aluno->nome }}</td>
                 </tr>
                 <tr>
                     <th>Nascimento:</th>
