@@ -26,3 +26,4 @@ Route::put('/user-password-update', 'UserController@passwordUpdate')->name('user
 Route::resource('user', 'UserController');
 Route::resource('tipos-usuarios', 'TiposUsuariosController');
 Route::resource('alunos', 'AlunosController');
+Route::resource('matriculas', 'MatriculasController');

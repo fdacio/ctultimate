@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class MatriculasController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('matriculas.index');
+    }
 }
