@@ -1,4 +1,4 @@
-<div class="form card card-body" id="form-dados-matriculas>
+<div class="form card card-body" id="form-dados-matriculas">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
@@ -7,10 +7,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6">
+        <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
                 <label for="data">Data da Matrícula</label>
-                {!! Form::text('data', isset($matricula->data) ? \Carbon\Carbon::parse($matricula->data)->format('d/m/Y') : null, ['class' => 'form-control data', 'id' => 'data']) !!}
+                {!! Form::text('data', isset($matricula->data) ? \Carbon\Carbon::parse($matricula->data)->format('d/m/Y') : old('data'), ['class' => 'form-control data calendar', 'id' => 'data']) !!}
             </div>
         </div>
     </div>    
@@ -18,7 +18,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="id-aluno">Aluno<small class="text-danger p-2">*</small></label>
-                {!! Form::select('id_aluno', $matriculas, isset($matricula->id_aluno) ? $matricula->id_aluno : old('id_aluno'), ['class' => 'form-control select', 'id' => 'id-aluno']) !!}
+                {!! Form::select('id_aluno', $alunos, isset($matricula->id_aluno) ? $matricula->id_aluno : old('id_aluno'), ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'id-aluno']) !!}
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <label for="id-categoria">Categoria<small class="text-danger p-2">*</small></label>
-                {!! Form::select('id_categoria', $categorias, isset($matricula->id_categoria) ? $matricula->id_categoria : old('id_categoria'), ['class' => 'form-control select', 'id' => 'id-categoria']) !!}
+                {!! Form::select('id_categoria', $categorias, isset($matricula->id_categoria) ? $matricula->id_categoria : old('id_categoria'), ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'id-categoria']) !!}
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
         <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
                 <label for="quantidade-meses">Quantidade de Meses</label>
-                {!! Form::text('quantidade_meses', isset($matricula->quantidade_meses) ? $matricula->quantidade_meses : old('quantidade_meses'), ['placeholder' => 'Selecione', 'class' => 'form-control numero text-right', 'id' => 'quantidade-meses']) !!}
+                {!! Form::text('quantidade_meses', isset($matricula->quantidade_meses) ? $matricula->quantidade_meses : old('quantidade_meses'), ['class' => 'form-control numero text-right', 'id' => 'quantidade-meses']) !!}
             </div>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4">

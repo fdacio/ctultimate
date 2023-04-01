@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Aluno;
+use App\Categoria;
 use App\Matricula;
 use Illuminate\Http\Request;
 
@@ -37,7 +39,9 @@ class MatriculasController extends Controller
      */
     public function create()
     {
-        //
+        $alunos = Aluno::orderBy('nome')->pluck('nome', 'id');
+        $categorias = Categoria::orderBy('nome')->pluck('nome', 'id');
+        return view('matriculas.create', compact('alunos', 'categorias'));
     }
 
     /**
