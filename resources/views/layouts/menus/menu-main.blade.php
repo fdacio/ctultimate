@@ -6,7 +6,7 @@
                 class="nav-label">Alunos</span></a></li>
     <li class="nav-item"><a href="{{ route('matriculas.index') }}" class="nav-link"><i class="fa fa-list btn"></i> <span
                 class="nav-label">Matrículas</span></a></li>
-    <li class="nav-item"><a href="{{ route('home') }}" class="nav-link"><i class="fa fa-dollar btn"></i> <span
+    <li class="nav-item"><a href="{{ route('mensalidades.index') }}" class="nav-link"><i class="fa fa-dollar btn"></i> <span
                 class="nav-label">Mensalidades</span></a></li>
     <li class="nav-item"><a href="{{ route('user.index') }}" class="nav-link"><i class="fa fa-user btn"></i><span
                 class="nav-label">Usuários</span></a></li>

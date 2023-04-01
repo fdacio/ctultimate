@@ -4,14 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Aluno;
 use App\Categoria;
+use App\Http\Requests\MatriculaRequest;
 use App\Matricula;
+use App\Mensalidade;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MatriculasController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('check.mensalidades.pagas')->only('edit', 'destroy');
     }
 
     /**
@@ -21,7 +27,8 @@ class MatriculasController extends Controller
      */
     public function index()
     {
-        $matriculas = Matricula::orderBy('alunos.nome', 'asc');
+        $matriculas = Matricula::select('matriculas.*')->orderBy('alunos.nome', 'asc');
+        $matriculas = $matriculas->join('alunos', 'matriculas.id_aluno', '=', 'alunos.id');
         $aluno = request()->get('aluno');
         if (!empty($aluno)) {
             $matriculas = $matriculas->whereHas('aluno', function ($query) use ($aluno) {
@@ -50,9 +57,18 @@ class MatriculasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MatriculaRequest $request)
     {
-        //
+        try {
+            DB::beginTransaction();
+            $matricula = Matricula::create($request->all());
+            $this->geraMensalidade($matricula);
+            DB::commit();
+            return redirect()->route('matriculas.index')->with('success', 'Matrícula cadastrada com sucesso.');
+        } catch (Exception $e) {
+            DB::rollBack();
+            return redirect()->route('matriculas.index')->with('danger', 'Não foi possível cadastrar matrícula: ' . $e->getMessage());
+        }
     }
 
     /**
@@ -61,9 +77,9 @@ class MatriculasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Matricula $matricula)
     {
-        //
+        return view('matriculas.show', compact($matricula));
     }
 
     /**
@@ -72,9 +88,11 @@ class MatriculasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Matricula $matricula)
     {
-        //
+        $alunos = Aluno::orderBy('nome')->pluck('nome', 'id');
+        $categorias = Categoria::orderBy('nome')->pluck('nome', 'id');
+        return view('matriculas.edit', compact('matricula', 'alunos', 'categorias'));        
     }
 
     /**
@@ -84,9 +102,10 @@ class MatriculasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MatriculaRequest $request, Matricula $matricula)
     {
-        //
+        $matricula->update($request->all());
+        return redirect()->route('matriculas.index')->with('success', 'Matrículas alterada com sucesso.');        
     }
 
     /**
@@ -95,8 +114,34 @@ class MatriculasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Matricula $matricula)
     {
-        //
+        try {
+            $matricula->delete();
+            return redirect()->route('matriculas.index')->with('success', 'Cadastro de Matrícula excluído com sucesso.');
+        } catch (Exception $e) {
+            return redirect()->route('matriculas.index')->with('danger', 'Não é possível excluir Matrícula. Há vínculos com outros registros.');
+        }
+
+    }
+
+
+    private function geraMensalidade(Matricula $matricula)
+    {
+        $quantidadeMeses = $matricula->quantidade_meses;
+        $valorMensalidade = $matricula->valor_mensalidade;
+        $vencimentoPrimeira = $matricula->vencimento_primeira_parcela;
+        $vencimento = $vencimentoPrimeira;
+        for ($i = 1; $i <= $quantidadeMeses; $i++) {
+            $dados = [
+                'id_matricula' => $matricula->id,
+                'numero' => $i,
+                'valor' => $valorMensalidade,
+                'vencimento' => $vencimento,
+                'situacao' => Mensalidade::SITUACAO_NAO_PAGA,
+            ];      
+            Mensalidade::create($dados);      
+            $vencimento = Carbon::parse($vencimento)->addMonth(1)->format('Y-m-d');
+        }        
     }
 }

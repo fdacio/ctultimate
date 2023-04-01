@@ -17,8 +17,8 @@
         </div>
         @endif
     </div>
-    {!! Form::open(['id' => 'form_matriculas', 'class' => 'form', 'method' => 'patch', 'route' => ['matriculas.update', $aluno->id]]) !!}
-    {!! Form::hidden('id', $aluno->id) !!}
+    {!! Form::open(['id' => 'form_matriculas', 'class' => 'form', 'method' => 'patch', 'route' => ['matriculas.update', $matricula->id]]) !!}
+    {!! Form::hidden('id', $matricula->id) !!}
     <div class="card-body">
         @include('matriculas.form')
     </div>

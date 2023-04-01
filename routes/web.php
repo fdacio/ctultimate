@@ -24,6 +24,12 @@ Route::get('/edit-password', 'UserController@editPassword')->name('edit.password
 Route::put('/user-password-update', 'UserController@passwordUpdate')->name('user.password.update' );
 
 Route::resource('user', 'UserController');
-Route::resource('tipos-usuarios', 'TiposUsuariosController');
 Route::resource('alunos', 'AlunosController');
 Route::resource('matriculas', 'MatriculasController');
+
+Route::get('/mensalidades', 'MensalidadesController@index')->name('mensalidades.index');
+Route::get('/mensalidades/show/{mensalidade}', 'MensalidadesController@show')->name('mensalidades.show');
+Route::put('/mensalidades/{mensalidade}/cancela', 'MensalidadesController@cancela')->name('mensalidades.cancela');
+Route::put('/mensalidades/{mensalidade}/reativa', 'MensalidadesController@reativa')->name('mensalidades.reativa');
+Route::put('/mensalidades/{mensalidade}/baixa', 'MensalidadesController@baixa')->name('mensalidades.baixa');
+Route::put('/mensalidades/baixa/{mensalidade}/store', 'MensalidadesController@storeBaixa')->name('mensalidades.baixa.store');

@@ -11,14 +11,20 @@
             {{ session('success') }}
         </div>
         @endif
+        @if(session('danger'))
+        <div class="alert alert-danger alert-dismissible">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+            {{ session('danger') }}
+        </div>
+        @endif
     </div>
     <div class="card-body">
         <form action="{{ route('matriculas.index') }}" method="get" class="form-filter">
             <div class="row">
                 <div class="form-group col-md-12">
-                    <label for="matricula">Nome do Aluno</label>
+                    <label for="aluno">Nome do Aluno</label>
                     <div class="input-group">
-                        <input type="text" name="matricula" id="matricula" class="form-control" value="{{ request('matricula') }}" />
+                        <input type="text" name="aluno" id="aluno" class="form-control" value="{{ request('aluno') }}" />
                         <div class="input-group-append">
                             <button class="btn btn-success"><i class="fa fa-search mr-2"></i><span>Pesquisar</span></button>
                         </div>
@@ -53,7 +59,7 @@
                 <td>{{ $matricula->id }}</td>
                 <td class="text-nowrap">{{ $matricula->aluno->nome }}</td>
                 <td class="text-nowrap">{{ $matricula->categoria->nome }}</td>
-                <td class="text-nowrap">{{ \Carbon\Carbon::parse($aluno->nascimento)->format('d/m/Y') }}</td>
+                <td class="text-nowrap">{{ \Carbon\Carbon::parse($matricula->data)->format('d/m/Y') }}</td>
                 <td class="text-nowrap text-right">
                     <a href="{{ route('matriculas.show', $matricula->id) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa fa-eye"></i></a>
                     <a href="{{ route('matriculas.edit', $matricula->id) }}" class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>

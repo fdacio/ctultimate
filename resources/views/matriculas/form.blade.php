@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
-                <label for="data">Data da Matrícula</label>
+                <label for="data">Data da Matrícula<small class="text-danger p-2">*</small></label>
                 {!! Form::text('data', isset($matricula->data) ? \Carbon\Carbon::parse($matricula->data)->format('d/m/Y') : old('data'), ['class' => 'form-control data calendar', 'id' => 'data']) !!}
             </div>
         </div>
@@ -33,20 +33,20 @@
     <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
-                <label for="quantidade-meses">Quantidade de Meses</label>
-                {!! Form::text('quantidade_meses', isset($matricula->quantidade_meses) ? $matricula->quantidade_meses : old('quantidade_meses'), ['class' => 'form-control numero text-right', 'id' => 'quantidade-meses']) !!}
+                <label for="quantidade-meses">Quantidade de Meses<small class="text-danger p-2">*</small></label>
+                {!! Form::text('quantidade_meses', isset($matricula->quantidade_meses) ? $matricula->quantidade_meses : old('quantidade_meses'), ['class' => 'form-control numero text-right', 'id' => 'quantidade-meses',  'readonly' => ((!empty($matricula)) ? true : false)]) !!}
             </div>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
-                <label for="valor-mensalidade">Valor da Mensalidade</label>
-                {!! Form::text('valor_mensalidade', isset($matricula->vencimento_primeira_parcela) ? $matricula->vencimento_primeira_parcela : old('vencimento_primeira_parcela'), ['class' => 'form-control real text-right', 'id' => 'vencimento-primeira-parcela']) !!}
+                <label for="valor-mensalidade">Valor da Mensalidade<small class="text-danger p-2">*</small></label>
+                {!! Form::text('valor_mensalidade', isset($matricula->valor_mensalidade) ? $matricula->valor_mensalidade : old('valor_mensalidade'), ['class' => 'form-control real text-right', 'id' => 'valor-mensalidade', 'readonly' => ((!empty($matricula)) ? true : false)]) !!}
             </div>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4">
             <div class="form-group">
-                <label for="vencimento-primeira-parcela">Vencimento da Primeira Parcela</label>
-                {!! Form::text('numero', isset($matricula->vencimento_primeira_parcela) ? $matricula->vencimento_primeira_parcela : old('vencimento_primeira_parcela'), ['class' => 'form-control data calendar', 'id' => 'vencimento-primeira-parcela', 'id' => 'numero']) !!}
+                <label for="vencimento-primeira-parcela">Vencimento da Primeira Parcela<small class="text-danger p-2">*</small></label>
+                {!! Form::text('vencimento_primeira_parcela', isset($matricula->vencimento_primeira_parcela) ? \Carbon\Carbon::parse($matricula->vencimento_primeira_parcela)->format('d/m/Y') : old('vencimento_primeira_parcela'), ['class' => 'form-control data calendar', 'id' => 'vencimento-primeira-parcela', 'readonly' => ((!empty($matricula)) ? true : false)]) !!}
             </div>
         </div>
     </div>
