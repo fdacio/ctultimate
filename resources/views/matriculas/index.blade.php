@@ -16,7 +16,7 @@
         <form action="{{ route('matriculas.index') }}" method="get" class="form-filter">
             <div class="row">
                 <div class="form-group col-md-12">
-                    <label for="matricula">matricula</label>
+                    <label for="matricula">Nome do Aluno</label>
                     <div class="input-group">
                         <input type="text" name="matricula" id="matricula" class="form-control" value="{{ request('matricula') }}" />
                         <div class="input-group-append">

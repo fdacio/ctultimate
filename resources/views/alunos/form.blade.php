@@ -32,13 +32,13 @@
         <div class="col-xs-10 col-sm-10 col-md-10">
             <div class="form-group">
                 <label for="endereco">Endereço</label>
-                {!! Form::text('endereco', isset($aluno) ? $aluno->endereco : null, ['class' => 'form-control', 'id' => 'endereco', 'id' => 'endereco']) !!}
+                {!! Form::text('endereco', isset($aluno) ? $aluno->endereco : null, ['class' => 'form-control', 'id' => 'endereco']) !!}
             </div>
         </div>
         <div class="col-xs-2 col-sm-2 col-md-2">
             <div class="form-group">
                 <label for="numero">Número</label>
-                {!! Form::text('numero', isset($aluno) ? $aluno->numero : null, ['class' => 'form-control', 'id' => 'numero', 'id' => 'numero']) !!}
+                {!! Form::text('numero', isset($aluno) ? $aluno->numero : null, ['class' => 'form-control', 'id' => 'numero']) !!}
             </div>
         </div>
     </div>
