@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class MatriculasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,14 @@ class MatriculasController extends Controller
      */
     public function index()
     {
-        $matriculas = Matricula::all();
+        $matriculas = Matricula::orderBy('alunos.nome', 'asc');
+        $aluno = request()->get('aluno');
+        if (!empty($aluno)) {
+            $matriculas = $matriculas->whereHas('aluno', function ($query) use ($aluno) {
+                $query = $query->where('nome', 'LIKE', '%' . $aluno . '%');
+            });
+        }
+        $matriculas = $matriculas->paginate(10);
         return view('matriculas.index', compact('matriculas'));
     }
 
