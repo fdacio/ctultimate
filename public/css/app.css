@@ -145,7 +145,7 @@ footer {
     border-bottom: 1px solid #e5e5e5;
 }
 
-@media(max-width: 660px) {
+@media(max-width: 760px) {
     .sidebar {
         display: none;
     }
@@ -155,5 +155,8 @@ footer {
     }
     .navbar-brand {
         width: auto;
+    }
+    .menu-responsive .btn {
+        color: #fff !important;
     }
 }
