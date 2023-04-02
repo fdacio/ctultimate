@@ -41,12 +41,12 @@
 <section class="table-responsive">
     <table class="table table-striped table-hover">
         <thead>
-            <th class="col-md-2">Nº </th>
+            <th class="col-md-1">Nº </th>
             <th class="col-md-2">Vencimento</th>
             <th class="col-md-2 text-right">Valor</th>
-            <th class="col-md-3">Situação</th>
-            <th>Observação</th>
-            <th style="width: 20%;"></th>
+            <th class="col-md-2">Situação</th>
+            <th class="col-md-3">Observação</th>
+            <th class="col-md-2"></th>
         </thead>
         <tbody>
             @if($mensalidades->count() == 0)
