@@ -1,17 +1,17 @@
-$('.modal-excluir').on('click', function(e) {
+$('.modal-estornar').on('click', function(e) {
     e.preventDefault();
     var form = $(this).parent();
     
     swal({
-        title: 'Tem certeza?',
-        text: 'Atenção! Esta ação não pode ser desfeita.', 
+        title: 'Estorno de pagamento',
+        text: 'Tem certeza que deseja estornar pagamento dessa mensalidade?', 
         icon: 'warning',
         buttons: true,
-        buttons: ['Cancelar', 'Deletar'],
+        buttons: ['Cancelar', 'Estornar'],
         dangerMode: true
     }).then((willDelete) => {
         if (willDelete) {
-            swal('Aguarde... o registro está sendo deletado!', {
+            swal('Aguarde... o registro está sendo processado!', {
                 title: 'Pronto!',
                 icon: 'success',
                 buttons: false
@@ -19,10 +19,10 @@ $('.modal-excluir').on('click', function(e) {
 
             setTimeout(function() {
                 form[0].submit();
-            }, 2000);
+            }, 1000);
         } else {
-            swal('Registro não deletado!', {
-                title: 'Operação cancelada!',
+            swal('Mensalidade não estornada!', {
+                title: 'Cancelado!',
                 icon: 'success',
             });
         }

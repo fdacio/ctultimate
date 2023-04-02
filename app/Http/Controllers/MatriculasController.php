@@ -79,7 +79,7 @@ class MatriculasController extends Controller
      */
     public function show(Matricula $matricula)
     {
-        return view('matriculas.show', compact($matricula));
+        return view('matriculas.show', compact('matricula'));
     }
 
     /**

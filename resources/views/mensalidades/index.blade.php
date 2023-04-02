@@ -38,6 +38,11 @@
     </div>
 </div>
 @if(request('id_matricula'))
+<div class="card mb-2">
+    <div class="card-header">
+        <h4>Aluno: {{ $matricula->descricao_matricula }}</h4>
+    </div>
+</div>            
 <section class="table-responsive">
     <table class="table table-striped table-hover">
         <thead>
@@ -63,14 +68,25 @@
                 <td class="text-nowrap">{{ $mensalidade->observacao }}</td>
                 
                 <td class="text-nowrap text-right">
-                    <a href="{{ route('mensalidades.baixa', $mensalidade->id) }}" class="btn btn-success btn-sm" title="Baixar"><span class="fa fa-dollar p-1"></span></a>
-                    @if($mensalidade->situacao == App\Mensalidade::SITUACAO_CANCELADA)
-                        <a href="{{ route('mensalidades.reativa', $mensalidade->id) }}" class="btn btn-primary btn-sm" title="Reativar"><i class="fa fa-check-square-o p-1"></i></a>
+                    @if($mensalidade->situacao == App\Mensalidade::SITUACAO_NAO_PAGA)
+                        <a href="{{ route('mensalidades.baixa', $mensalidade->id) }}" class="btn btn-success btn-sm" title="Baixar"><span class="fa fa-dollar p-1"></span></a>
                     @else
-                        <a href="{{ route('mensalidades.cancela', $mensalidade->id) }}" class="btn btn-danger btn-sm" title="Cancelar"><i class="fa fa-remove p-1"></i></a>
+                        {!! Form::open(['id' => 'form_estorna_baixa_' . $mensalidade->id, 'method' => 'delete', 'route' => ['mensalidades.baixa.estorna', $mensalidade->id], 'style'=>'display: inline']) !!}
+                        {!! Form::button('<i class="fa fa-dollar p-1"></i>', ['type' => 'button', 'class' => 'btn btn-danger btn-sm modal-estornar', 'title' => 'Estornar Baixa']) !!}
+                        {!! Form::close() !!}
                     @endif
-                    <a href="{{ route('mensalidades.show', $mensalidade->id) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa fa-eye p-1"></i></a>
-                    <a href="{{ route('mensalidades.edit', $mensalidade->id) }}" class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil p-1"></i></a>                    
+                    <a href="{{ route('mensalidades.show', $mensalidade->id) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa fa-eye"></i></a>
+                    <a href="{{ route('mensalidades.edit', $mensalidade->id) }}" class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>                    
+
+                    @if($mensalidade->situacao == App\Mensalidade::SITUACAO_CANCELADA)
+                        {!! Form::open(['id' => 'form_reativa_' . $mensalidade->id, 'method' => 'put', 'route' => ['mensalidades.reativa', $mensalidade->id], 'style'=>'display: inline']) !!}
+                        {!! Form::button('<i class="fa fa-check-square-o"></i>', ['type' => 'submit', 'class' => 'btn btn-primary btn-sm', 'title' => 'Reativar']) !!}
+                        {!! Form::close() !!}
+                    @else
+                        {!! Form::open(['id' => 'form_cancela_' . $mensalidade->id, 'method' => 'delete', 'route' => ['mensalidades.cancela', $mensalidade->id], 'style'=>'display: inline']) !!}
+                        {!! Form::button('<i class="fa fa-remove"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-sm', 'title' => 'Cancelar']) !!}
+                        {!! Form::close() !!}
+                    @endif
                 </td>
             </tr>
             @endforeach
@@ -80,4 +96,6 @@
 </section>
 @endif
 @endsection
-
+@section('scripts')
+{!! Html::script('js/modal-estornar.js') !!}
+@endsection

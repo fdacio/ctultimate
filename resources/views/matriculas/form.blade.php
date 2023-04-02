@@ -1,4 +1,4 @@
-<div class="form card card-body" id="form-dados-matriculas">
+<div class="form" id="form-dados-matriculas">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
