@@ -117,6 +117,7 @@ class MatriculasController extends Controller
     public function destroy(Matricula $matricula)
     {
         try {
+            Mensalidade::where('id_matricula', $matricula->id)->delete();
             $matricula->delete();
             return redirect()->route('matriculas.index')->with('success', 'Cadastro de Matrícula excluído com sucesso.');
         } catch (Exception $e) {
