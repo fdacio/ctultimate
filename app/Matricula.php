@@ -28,6 +28,12 @@ class Matricula extends Model
         return $this->belongsTo(Categoria::class, 'id_categoria');
     }
 
+    public function getDescricaoMatriculaAttribute()
+    {
+        $descricao = $this->aluno->nome . ' | Categoria: ' . $this->categoria->nome . ' | Matrícula: ' . $this->id;
+        return $descricao; 
+    }
+
     public function setDataAttribute($data)
     {
         if (!empty($data)) {

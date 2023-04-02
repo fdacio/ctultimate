@@ -29,6 +29,7 @@ Route::resource('matriculas', 'MatriculasController');
 
 Route::get('/mensalidades', 'MensalidadesController@index')->name('mensalidades.index');
 Route::get('/mensalidades/show/{mensalidade}', 'MensalidadesController@show')->name('mensalidades.show');
+Route::get('/mensalidades/{mensalidade}/edit', 'MensalidadesController@edit')->name('mensalidades.edit');
 Route::put('/mensalidades/{mensalidade}/cancela', 'MensalidadesController@cancela')->name('mensalidades.cancela');
 Route::put('/mensalidades/{mensalidade}/reativa', 'MensalidadesController@reativa')->name('mensalidades.reativa');
 Route::put('/mensalidades/{mensalidade}/baixa', 'MensalidadesController@baixa')->name('mensalidades.baixa');

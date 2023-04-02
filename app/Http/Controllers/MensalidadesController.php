@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use App\Matricula;
 use App\Mensalidade;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class MensalidadesController extends Controller
 {
     public function index()
     {
-        $matriculas = Matricula::pluck('id_aluno', 'id');
-        $mensalidades = [];
-        $matricula = request()->get('matricula');
+        $matriculas = Matricula::select('matriculas.*')->orderBy('alunos.nome', 'asc');
+        $matriculas = $matriculas->join('alunos', 'matriculas.id_aluno', '=', 'alunos.id');
+        $matriculas = $matriculas->get()->pluck('descricao_matricula', 'id');
+        $mensalidades = new Collection([]);
+        $matricula = request()->get('id_matricula');
         if (!empty($matricula)) {
-            $mensalidades = Matricula::where('id_matricula', $matricula)->orderBy('numero', 'asc');
+            $mensalidades = Mensalidade::where('id_matricula', $matricula)->orderBy('numero', 'asc')->get();
         }
         return view('mensalidades.index', compact('matriculas', 'mensalidades'));
     }

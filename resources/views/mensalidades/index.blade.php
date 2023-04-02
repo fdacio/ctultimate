@@ -21,36 +21,35 @@
     <div class="card-body">
         <form action="{{ route('mensalidades.index') }}" method="get" class="form-filter">
             <div class="row">
-                <div class="form-group col-md-12">
-                    <label for="id-mensalidade">Aluno</label>
-                    <div class="input-group">
-                        {{ Form::select($mensalidades, old('id_mensalidade'), ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'id-mensalidade']) }}
-                        <div class="input-group-append">
-                            <button class="btn btn-success"><i class="fa fa-search mr-2"></i><span>Pesquisar</span></button>
-                        </div>
+                <div class="col-md-10 col-lg-10 col-sm-12">
+                    <div class="form-group">
+                        <label for="id-matricula">Aluno</label>
+                        {{ Form::select('id_matricula', $matriculas, request('id_matricula'), ['placeholder' => 'Selecione', 'class' => 'form-control select', 'id' => 'id-matricula']) }}
+                    </div>
+                </div>
+                <div class="col-md-2 col-lg-2 col-sm-12">
+                    <div class="form-group">
+                        <label>&nbsp</label>
+                        <button class="form-control btn btn-success"><i class="fa fa-search mr-2"></i><span>Pesquisar</span></button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    <div class="card-footer">
-        <div class="text-right mb-2">
-            <a href="{{ route('mensalidades.create') }}" class="btn btn-primary"><i class="fa fa-plus mr-2"></i>Cadastrar</a>
-        </div>
-    </div>
 </div>
+@if(request('id_matricula'))
 <section class="table-responsive">
     <table class="table table-striped table-hover">
         <thead>
-            <th>Nº </th>
-            <th>Vencimento</th>
-            <th>Valor</th>
-            <th>Situação</th>
+            <th class="col-md-2">Nº </th>
+            <th class="col-md-2">Vencimento</th>
+            <th class="col-md-2 text-right">Valor</th>
+            <th class="col-md-3">Situação</th>
             <th>Observação</th>
             <th style="width: 20%;"></th>
         </thead>
         <tbody>
-            @if($mensalidades->total() == 0)
+            @if($mensalidades->count() == 0)
             <tr>
                 <th class="text-center" colspan="7">Nenhuma mensalidade encontrado</th>
             </tr>
@@ -59,16 +58,19 @@
             <tr>
                 <td>{{ $mensalidade->numero}}</td>
                 <td class="text-nowrap">{{ \Carbon\Carbon::parse($mensalidade->data)->format('d/m/Y') }}</td>
-                <td class="text-nowrap">{{ number_format($mensalidade->valor, 2, ',', '.') }}</td>
-                <td class="text-nowrap">{{ $mensalidade->situacao_mensalidade }}</td>
+                <td class="text-nowrap text-right">{{ 'R$ ' .number_format($mensalidade->valor, 2, ',', '.') }}</td>
+                <td class="text-nowrap {{ $mensalidade->situacao_cor }}">{{ $mensalidade->situacao_mensalidade }} {{ (!empty($mensalidade->data_pagamento)) ? '(' . \Carbon\Carbon::parse($mensalidade->data_pagamento)->format('d/m/Y') . ')' : '' }}</td>
                 <td class="text-nowrap">{{ $mensalidade->observacao }}</td>
                 
                 <td class="text-nowrap text-right">
+                    <a href="{{ route('mensalidades.baixa', $mensalidade->id) }}" class="btn btn-success btn-sm" title="Baixar"><i class="fa fa-check-square"></i></a>
+                    @if($mensalidade->situacao == App\Mensalidade::SITUACAO_CANCELADA)
+                        <a href="{{ route('mensalidades.reativa', $mensalidade->id) }}" class="btn btn-primary btn-sm" title="Reativar"><i class="fa fa-check-square-o"></i></a>
+                    @else
+                        <a href="{{ route('mensalidades.cancela', $mensalidade->id) }}" class="btn btn-danger btn-sm" title="Cancelar"><i class="fa fa-remove"></i></a>
+                    @endif
                     <a href="{{ route('mensalidades.show', $mensalidade->id) }}" class="btn btn-info btn-sm" title="Visualizar"><i class="fa fa-eye"></i></a>
-                    <a href="{{ route('mensalidades.edit', $mensalidade->id) }}" class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>
-                    <a href="{{ route('mensalidades.baixa', $mensalidade->id) }}" class="btn btn-success btn-sm" title="Baixar"><i class="fa fa-check"></i></a>
-                    <a href="{{ route('mensalidades.cancela', $mensalidade->id) }}" class="btn btn-danger btn-sm" title="Cancelar"><i class="fa fa-check"></i></a>
-                    <a href="{{ route('mensalidades.reativa', $mensalidade->id) }}" class="btn btn-danger btn-sm" title="Cancelar"><i class="fa fa-check"></i></a>
+                    <a href="{{ route('mensalidades.edit', $mensalidade->id) }}" class="btn btn-primary btn-sm" title="Editar"><i class="fa fa-pencil"></i></a>                    
                 </td>
             </tr>
             @endforeach
@@ -76,15 +78,6 @@
         </tbody>
     </table>
 </section>
-
-<section class="text-center">
-    {{ $mensalidades->appends(request()->query())->links() }}
-    <h6><b>{{ $mensalidades->total() }}</b> {{ $mensalidades->total() == 1 ? 'registro' : 'registros' }} no total</h6>
-</section>
-@endsection
-
-@if($mensalidades->total() > 0)
-@section('scripts')
-{!! Html::script('js/modal-excluir.js') !!}
-@endsection
 @endif
+@endsection
+
