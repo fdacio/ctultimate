@@ -62,7 +62,7 @@
             @foreach ($mensalidades as $mensalidade)
             <tr>
                 <td>{{ $mensalidade->numero}}</td>
-                <td class="text-nowrap">{{ \Carbon\Carbon::parse($mensalidade->data)->format('d/m/Y') }}</td>
+                <td class="text-nowrap">{{ \Carbon\Carbon::parse($mensalidade->vencimento)->format('d/m/Y') }}</td>
                 <td class="text-nowrap text-right">{{ 'R$ ' .number_format($mensalidade->valor, 2, ',', '.') }}</td>
                 <td class="text-nowrap {{ $mensalidade->situacao_cor }}">{{ $mensalidade->situacao_mensalidade }} {{ (!empty($mensalidade->data_pagamento)) ? '(' . \Carbon\Carbon::parse($mensalidade->data_pagamento)->format('d/m/Y') . ')' : '' }}</td>
                 <td class="text-nowrap">{{ $mensalidade->observacao }}</td>
